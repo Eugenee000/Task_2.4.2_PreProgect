@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new user</title>
+
+    <style type="text/css">
+        body {
+            height: 2000px;
+            background: radial-gradient(at top, #FEFFFF, #A7CECC);
+        }
+
+        input {
+            /* round the corners */
+            padding: 10px;
+            border: 5px;
+            width: 50%;
+            margin: 15px 0;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+        }
+
+        #centerLayer {
+            width: 400px; /* Ширина слоя в пикселах */
+            margin: 0 auto; /* Отступ слева и справа */
+            padding: 20px; /* Поля вокруг текста */
+        }
+
+        input:focus {
+            outline: none;
+            border: 1px solid #4195fc;
+            /* create a BIG glow */
+            box-shadow: 0px 0px 14px #4195fc;
+            -moz-box-shadow: 0px 0px 14px #4195fc;
+            -webkit-box-shadow: 0px 0px 14px #4195fc;
+        }
+
+        ​
+    </style>
+</head>
+<body id="centerLayer">
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <label for="name">Enter name: </label>
+    <center><input type="text" th:field="*{userName}" id="name"></center>
+    <br/>
+    <label for="lastName">Enter lastname: </label>
+    <center><input type="text" th:field="*{lastName}" id="lastName"></center>
+    <br/>
+    <label for="age">Enter age: </label>
+    <center><input type="number" th:field="*{age}" id="age"></center>
+    <br/>
+    <label for="password">Enter password: </label>
+    <center><input type="password" th:field="*{password}" id="password"></center>
+    <br/>
+    <label for="eMail">Enter email: </label>
+    <center><input type="text" th:field="*{email}" id="eMail"></center>
+    <br/>
+    <label>Choose a role: </label>
+    <center><select multiple size="2" name="role">
+        <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+        <option selected="selected" value="ROLE_USER">ROLE_USER</option>
+    </select></center>
+    <input type="submit" value="Add User">
+</form>
+</body>
+</html>
