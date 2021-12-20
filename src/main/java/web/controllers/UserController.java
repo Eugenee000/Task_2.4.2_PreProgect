@@ -16,11 +16,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage() {
-        return "admin/login";
-    }
-
     @GetMapping(value = "/user")
     public String index(Principal pri, Model modelMap) {
         modelMap.addAttribute("user", userService.getUserByName(pri.getName()));
